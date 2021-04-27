@@ -49,8 +49,21 @@ sudo rm -rf ~/Library/Application\ Support/Code/User/settings.json > /dev/null 2
 cp $CONFIG/vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
 
 # Setup SSH keys
-printf "⚙️ Creating ssh keys...\n"
-ssh-keygen -t rsa -b 4096 -N ''
+if [ ! -f "~/.ssh/id_rsa" ]
+  printf "⚙️ Creating ssh keys with email as the label...\n"
+  echo ""
+	read -p "Enter your e-mail: " ssh_email
+  echo ""
+  ssh-keygen -t rsa -b 4096 -N '' -C $ssh_email -q -f ~/.ssh/id_rsa
+
+  read -p "[SSH] Update gerrit server with new SSH key (yes/no): " response
+  if test "$response" = "yes"; then
+    username=$(echo $ssh_email | awk -F"@" '{print $1}')
+    echo ""
+    read -p "Enter the gerrit server: " gerrit_server
+    cat ~/.ssh/id_rsa.pub| ssh -p 29418 $gerrit_server gerrit set-account --add-ssh-key - $username
+  fi
+fi
 
 # Setup gerrit script
 printf "⚙️ Setting up gerrit script...\n"

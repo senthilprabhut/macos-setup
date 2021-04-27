@@ -23,6 +23,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 printf "⚙️ Check Brew...\n"
 if test ! $(which brew); then
   # Install Homebrew
+    # Homebrew itself depends on the command line tools (CLT) for Xcode installed using xcode-select --install
     printf "📦 Installing XCode CL tools...\n"
     #xcode-select --install
     touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress

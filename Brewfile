@@ -25,6 +25,35 @@ brew "yarn"
 #brew "stephenc/helm-legacy/k3d@3.0.2"
 #brew "datawire/blackbird/telepresence"
 
+
+# Install Mac App Store applications. Comes before 'cask' so a MAS version of an app takes precendence
+mas "1Password", id: 443987910
+mas "Ethernet Status", id: 834979136
+mas "Home Inventory", id: 413564952
+mas "HomePass", id: 1330266650
+mas "Magnet", id: 441258766
+mas "Meeter", id: 1510445899
+mas "Microsoft OneNote", id: 784801555
+mas "Microsoft OneDrive", id: 823766827
+mas "Paprika Recipe Manager 3", id: 1303222628
+mas "Pastel", id: 413897608
+mas "Pluralsight: Learn Tech Skills", id: 431748264
+mas "PocketTube", id: 1533703891
+mas "Quiver - take better notes", id: 866773894
+mas "SafeInCloud Password Manager", id: 883070818
+mas "Screens 4", id: 1224268771
+mas "Simplenote", id: 692867256
+mas "Slack", id: 803453959
+mas "Spark", id: 1176895641
+#mas "Soulver 3", id: 1508732804
+#mas "Telegram", id: 747648890
+mas "Telegram Lite", id: 946399090
+mas "TextSniper", id: 1528890965
+mas "The Unarchiver", id: 425424353
+mas "Time Out", id: 402592703
+mas "TouchRetouch", id: 671595950
+
+
 # Install Mac applications - 'brew install --cask'
 cask_args appdir: "~/Applications"
 cask "alfred"
@@ -57,30 +86,3 @@ cask "unite"
 cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
-
-# Install Mac App Store applications
-mas "1Password", id: 443987910
-mas "Ethernet Status", id: 834979136
-mas "Home Inventory", id: 413564952
-mas "HomePass", id: 1330266650
-mas "Magnet", id: 441258766
-mas "Meeter", id: 1510445899
-mas "Microsoft OneNote", id: 784801555
-mas "Microsoft OneDrive", id: 823766827
-mas "Paprika Recipe Manager 3", id: 1303222628
-mas "Pastel", id: 413897608
-mas "Pluralsight: Learn Tech Skills", id: 431748264
-mas "PocketTube", id: 1533703891
-mas "Quiver - take better notes", id: 866773894
-mas "SafeInCloud Password Manager", id: 883070818
-mas "Screens 4", id: 1224268771
-mas "Simplenote", id: 692867256
-mas "Slack", id: 803453959
-mas "Spark", id: 1176895641
-#mas "Soulver 3", id: 1508732804
-#mas "Telegram", id: 747648890
-mas "Telegram Lite", id: 946399090
-mas "TextSniper", id: 1528890965
-mas "The Unarchiver", id: 425424353
-mas "Time Out", id: 402592703
-mas "TouchRetouch", id: 671595950
