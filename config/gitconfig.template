@@ -1,0 +1,16 @@
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+[user]
+    name = Senthil Prabhu
+    email = senthilprabhu.t@gmail.com
+[color]
+    ui = true
+[push]
+    default = simple
+[core]
+    excludesfile = ~/.gitignore
+[commit]
+    template = ~/.commit_template

@@ -1,0 +1,90 @@
+###############################################################################
+# Paths                                                                       #
+###############################################################################
+#export GRADLE_HOME=~/Work/software/gradle661
+#export MAVEN_HOME=~/Work/software/maven331
+#export JAVA_HOME=~/Work/software/zulu16.28.11-ca-jdk16.0.0/zulu-16.jdk/Contents/Home/
+export PATH=$PATH:/opt/homebrew/bin
+export PATH=/opt/homebrew/opt/openssl@1.1/bin:$PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+#export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
+
+
+###############################################################################
+# Aliases                                                                     #
+###############################################################################
+# Git
+alias gst='git status'
+alias gl='git pull --prune'
+alias gp='git push'
+alias gd='git diff | mate'
+alias gb='git branch'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias glog='git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative'
+alias glo='git log --oneline'
+alias grm='git rebase master'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias gs='git stash save'
+alias gsa='git stash save -a'
+alias gsl='git stash list'
+alias gss='git stash show'
+alias gsp='git stash show -p'
+alias gsb='git stash branch'
+alias gsd='git stash drop'
+alias gfp='git format-patch -1'
+alias gfh='git format-patch -1 HEAD'
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# Reload the shell
+#alias reload="exec ${SHELL} -l"
+alias reload!='. ~/.zshrc'
+
+# Brew
+alias bup="brew -v update && brew -v upgrade && mas upgrade && brew -v cleanup --prune=2 && brew doctor && brew -v upgrade --casks --greedy"
+
+# Functions
+alias lip='listIps'
+alias setip='setLoopbackIp'
+
+###############################################################################
+# Settings                                                                    #
+###############################################################################
+# Better history - https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
+###############################################################################
+# ZSH Completion                                                              #
+###############################################################################
+#zsh completion
+## matches case insensitive for lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+## pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
+
+###############################################################################
+# Shell Functions                                                             #
+###############################################################################
+function listIps() {
+    setopt shwordsplit
+    interfaces=$(ifconfig -l)
+    for interface in $interfaces; do
+      address=$(ifconfig ${interface} | grep "inet " | awk '{print $2}' | grep -v "127.0.0.1")
+      if [ ! -z ${address} ]; then
+        echo "${interface} : ${address}"
+      fi
+    done
+}
+
+function setLoopbackIp() {
+  sudo ifconfig lo0 alias $1
+}

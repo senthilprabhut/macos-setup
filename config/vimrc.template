@@ -1,0 +1,43 @@
+" https://gist.github.com/rafaelrinaldi/ef86a57b487fd3aa22451c0719bbd44f
+
+" UTF-8 all the things
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Turn on color syntax and allow custom Git commit message messages
+syntax enable
+
+" Show line numbers
+set number
+
+" Show ruler at all times
+set ruler
+
+" Display hidden whitespace
+set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·
+set showbreak=↪\
+
+" Display hidden characters by default
+set list
+
+" Highlight current line
+set cursorline
+
+" Highlight column 80
+set colorcolumn=80
+set linebreak
+
+" Set highlight for search
+set hlsearch
+
+" Case-insensitive searching
+set ignorecase
+
+" Limits the body of Git commit messages to 72 characters
+autocmd Filetype gitcommit setlocal textwidth=72
+
+" Enable spell checking on certain file types
+autocmd BufRead,BufNewFile *.md,gitcommit setlocal spell complete+=kspell
+
+" Fix folding on JSON and CSS files
+autocmd Filetype json,css,scss setlocal foldmethod=syntax

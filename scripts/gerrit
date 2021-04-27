@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+set -e
+
+function hash() {
+  openssl dgst -sha1 < $1 | awk '{ print $NF }'
+}
+
+command=$1
+shift || true
+
+function help() {
+  (
+    echo "Usage: $0 <command>"
+    echo ""
+    echo "Available commands:"
+    echo ""
+    echo "    clone REPOSITORY [DIRECTORY]"
+    echo "      Clone a Gerrit repository located at REPOSITORY"
+    echo ""
+    echo "    push [OPTIONS]"
+    echo "      Push HEAD to Gerrit for review"
+    echo ""
+    echo "      Options:"
+    echo "        -d, --draft           Push as draft"
+    echo "        -b, --branch BRANCH   Push to remote BRANCH"
+    echo ""
+  ) 1>&2
+  exit 1
+}
+
+case $command in
+  -h|--help)
+    help
+  ;;
+
+  clone)
+    repository="$1"
+    directory="$2"
+
+    # This matches:
+    # ssh://pnoordhuis@review.ec.eng.vmware.com:29418/test
+    # ssh://pnoordhuis@review.ec.eng.vmware.com/test
+    # review.ec.eng.vmware.com:test
+    # gerrit:test
+    host=$(echo $repository | sed -E 's#(.*//)?(([a-z]+@)?[a-z.-]+)(:[0-9]+)?([:/](.*))?#\2#')
+    path=$(echo $repository | sed -E 's#(.*//)?(([a-z]+@)?[a-z.-]+)(:[0-9]+)?([:/](.*))?#\6#')
+
+    if [ -z "$directory" ]
+    then
+      directory=./$path
+    fi
+
+    # Clone
+    git clone "$repository" "$directory"
+
+    # Install commit hook
+    echo "Installing commit hook..."
+    scp -p -P 29418 $host:hooks/commit-msg $directory/.git/hooks
+
+    # Install tracked hooks
+    if [ -x $directory/git/install-hook-symlinks ]
+    then
+      echo "Installing tracked hooks..."
+      (cd $directory && ./git/install-hook-symlinks)
+    fi
+  ;;
+
+  push)
+    type="for"
+    remote_branch=master
+    local_branch=$(git rev-parse --abbrev-ref HEAD)
+
+    while [ $# -gt 0 ]; do
+      case "$1" in
+        --branch|-b)
+          remote_branch="$2"
+          shift
+          shift
+          ;;
+        --draft|-d)
+          type="drafts"
+          shift
+          ;;
+        *)
+          echo "Unknown option: $1" 1>&2
+          exit 1
+          ;;
+      esac
+    done
+
+    git push origin HEAD:refs/$type/$remote_branch -o topic=$local_branch
+  ;;
+
+  *)
+    (
+      echo "Unknown command: $command"
+      echo ""
+    ) 1>&2
+
+    help
+  ;;
+esac
