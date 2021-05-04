@@ -49,6 +49,8 @@ alias bup="brew -v update && brew -v upgrade && mas upgrade && brew -v cleanup -
 # Functions
 alias lip='listIps'
 alias setip='setLoopbackIp'
+# check https://unix.stackexchange.com/a/366683 for explanation about below alias
+alias killproc='f(){ ps -ef | grep -i $1 | grep -i java | awk '\''{print $2}'\'' | xargs kill -9;  unset -f f; }; f'
 
 ###############################################################################
 # Settings                                                                    #
