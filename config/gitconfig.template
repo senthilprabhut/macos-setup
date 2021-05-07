@@ -10,6 +10,8 @@
     ui = true
 [push]
     default = simple
+[pull]
+    rebase = true    
 [core]
     excludesfile = ~/.gitignore
 [commit]
