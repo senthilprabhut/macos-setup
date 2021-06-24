@@ -21,7 +21,7 @@ alias gd='git diff | mate'
 alias gb='git branch'
 alias gco='git checkout'
 alias gcob='git checkout -b'
-alias glog='git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative'
+alias glog='git log --graph --pretty=format:"%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias glo='git log --oneline'
 alias grm='git rebase master'
 alias grc='git rebase --continue'
@@ -40,8 +40,8 @@ alias gfh='git format-patch -1 HEAD'
 alias path='echo -e ${PATH//:/\\n}'
 
 # Reload the shell
-#alias reload="exec ${SHELL} -l"
-alias reload!='. ~/.zshrc'
+#alias reload='exec ${SHELL} -l'
+alias reload!='. ~/.zprofile'
 
 # Brew
 alias bup="brew -v update && brew -v upgrade && mas upgrade && brew -v cleanup --prune=2 && brew doctor && brew -v upgrade --casks --greedy"

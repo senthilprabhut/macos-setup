@@ -49,7 +49,7 @@ sudo rm -rf ~/Library/Application\ Support/Code/User/settings.json > /dev/null 2
 cp $CONFIG/vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
 
 # Setup SSH keys
-if [ ! -f "~/.ssh/id_rsa" ]
+if [ ! -f "~/.ssh/id_rsa" ]; then
   printf "⚙️ Creating ssh keys with email as the label...\n"
   echo ""
 	read -p "Enter your e-mail: " ssh_email

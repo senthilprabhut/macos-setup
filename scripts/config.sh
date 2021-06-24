@@ -21,8 +21,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Update Zsh settings
 printf "⚙️ Update Zsh settings...\n"
-sudo rm -rf ~/.zshrc > /dev/null 2>&1
-cp $CONFIG/zshrc.template ~/.zshrc
+sudo rm -rf ~/.zprofile > /dev/null 2>&1
+cp $CONFIG/zprofile.template ~/.zprofile
 
 # Configure macOS Finder
 printf "⚙️ Configure Finder...\n"

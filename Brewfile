@@ -21,6 +21,7 @@ brew "kubernetes-cli"
 brew "lnav"
 brew "mr"
 brew "node@10"
+brew "pv"
 brew "yarn"
 #brew "stephenc/helm-legacy/k3d@3.0.2"
 #brew "datawire/blackbird/telepresence"
@@ -29,7 +30,7 @@ brew "yarn"
 # Install Mac App Store applications. Comes before 'cask' so a MAS version of an app takes precendence
 mas "1Password", id: 443987910
 mas "Ethernet Status", id: 834979136
-mas "Home Inventory", id: 413564952
+#mas "Home Inventory", id: 413564952
 mas "HomePass", id: 1330266650
 mas "Magnet", id: 441258766
 mas "Meeter", id: 1510445899
@@ -56,15 +57,15 @@ mas "TouchRetouch", id: 671595950
 
 # Install Mac applications - 'brew install --cask'
 cask_args appdir: "~/Applications"
-cask "alfred"
+#cask "alfred"
 cask "appcleaner"
-#cask "atom"
+cask "atom"
 cask "boxcryptor"
 cask "daisydisk"
 cask "default-folder-x"
 cask "devutils"
 cask "docker"
-cask "dropbox"
+#cask "dropbox"
 cask "firefox"
 #cask "google-chrome"
 cask "intellij-idea"
@@ -78,6 +79,7 @@ cask "one-switch"
 cask "osxfuse"
 cask "pdf-expert"
 cask "postman"
+cask "raycast"
 cask "subler"
 #cask "transmission"
 cask "transmit"
