@@ -32,20 +32,22 @@ mas "1Password", id: 443987910
 mas "Ethernet Status", id: 834979136
 #mas "Home Inventory", id: 413564952
 mas "HomePass", id: 1330266650
+mas "Hush Nag Blocker", id: 1544743900
 mas "Magnet", id: 441258766
 mas "Meeter", id: 1510445899
 mas "Microsoft OneNote", id: 784801555
 mas "Microsoft OneDrive", id: 823766827
+mas "Mp3tag", id: 1532597159
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Pastel", id: 413897608
 mas "Pluralsight: Learn Tech Skills", id: 431748264
 mas "PocketTube", id: 1533703891
-mas "Quiver - take better notes", id: 866773894
+#mas "Quiver - take better notes", id: 866773894
 mas "SafeInCloud Password Manager", id: 883070818
 mas "Screens 4", id: 1224268771
 mas "Simplenote", id: 692867256
 mas "Slack", id: 803453959
-mas "Spark", id: 1176895641
+#mas "Spark", id: 1176895641
 #mas "Soulver 3", id: 1508732804
 #mas "Telegram", id: 747648890
 mas "Telegram Lite", id: 946399090
@@ -53,13 +55,16 @@ mas "TextSniper", id: 1528890965
 mas "The Unarchiver", id: 425424353
 mas "Time Out", id: 402592703
 mas "TouchRetouch", id: 671595950
+mas "Under My Roof, Home Manager", id: 1524335878
 
 
 # Install Mac applications - 'brew install --cask'
 cask_args appdir: "~/Applications"
 #cask "alfred"
+cask "alt-tab"
 cask "appcleaner"
 cask "atom"
+cask "bartender"
 cask "boxcryptor"
 cask "daisydisk"
 cask "default-folder-x"
@@ -69,12 +74,14 @@ cask "docker"
 cask "firefox"
 #cask "google-chrome"
 cask "intellij-idea"
+cask "itsycal"
 #cask "java" or cask "zulu"
 #tap homebrew/cask-drivers
 #cask "logitech-options"
 cask "macupdater"
 cask "microsoft-edge"
 cask "monitorcontrol"
+cask "obsidian"
 cask "one-switch"
 cask "osxfuse"
 cask "pdf-expert"
