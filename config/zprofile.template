@@ -56,22 +56,22 @@ alias killproc='f(){ ps -ef | grep -i $1 | grep -i java | awk '\''{print $2}'\''
 # Settings                                                                    #
 ###############################################################################
 # Better history - https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+#autoload -U up-line-or-beginning-search
+#autoload -U down-line-or-beginning-search
+#zle -N up-line-or-beginning-search
+#zle -N down-line-or-beginning-search
+#bindkey "^[[A" up-line-or-beginning-search # Up
+#bindkey "^[[B" down-line-or-beginning-search # Down
 
 ###############################################################################
 # ZSH Completion                                                              #
 ###############################################################################
 #zsh completion
 ## matches case insensitive for lowercase
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 ## pasting with tabs doesn't perform completion
-zstyle ':completion:*' insert-tab pending
+#zstyle ':completion:*' insert-tab pending
 
 ###############################################################################
 # Shell Functions                                                             #

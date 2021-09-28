@@ -28,8 +28,8 @@ cp $CONFIG/gitconfig.symlink ~/.gitconfig
 cp $CONFIG/commit_template ~/commit_template
 
 # Update vim settings
-printf "⚙️ Update vim settings...\n"
-cp $CONFIG/vimrc.template ~/.vimrc
+#printf "⚙️ Update vim settings...\n"
+#cp $CONFIG/vimrc.template ~/.vimrc
 
 # Install Visual Studio Code plugins [1/2]
 printf "⚙️ Put Visual Studio Code in quarantine to install plugins...\n"
